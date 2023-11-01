@@ -1,24 +1,16 @@
 package in.suvam.todoauth;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "tasks")
 public class sql{
-    private String query;
-    private int result_count = 0;
-    // private String result = "";
 
-    @Autowired
-    private JdbcTemplate mysql;
+    @Column(name = "task_name")
+    private String name;
 
-    void insertRow()
-    {
-        System.out.println("call success");
-        query = "INSERT INTO tasks (task_name, task_time) VALUES (?, ?)";
-        result_count = mysql.update(query, "Dinner", "21:00");
-        if(result_count > 0)
-        {
-            System.out.println("1 row inseted");
-        }
-    }
+    @Column(name = "task_time")
+    private String time;
 }
